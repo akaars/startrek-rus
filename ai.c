@@ -100,7 +100,7 @@ static void movebaddy(int comx, int comy, int loccom, int ienm) {
 
 	 Attacker Initial energy levels (nominal):
 	          Klingon   Romulan   Commander   Super-Commander
-	 Novice    400        700        1200        
+	 Novice    400        700        1200
 	 Fair      425        750        1250
 	 Good      450        800        1300        1750
 	 Expert    475        850        1350        1875
@@ -260,8 +260,8 @@ static void movebaddy(int comx, int comy, int loccom, int ienm) {
 		if (damage[DSRSENS] == 0 || condit == IHDOCKED) {
 			proutn("***");
 			cramen(ienm);
-			if (kdist[loccom] < dist1) proutn(" advances to");
-			else proutn(" retreats to");
+			if (kdist[loccom] < dist1) proutn(" продвигается в");
+			else proutn(" отступает на");
 			cramlc(2, nextx, nexty);
 			skip(1);
 		}
@@ -330,7 +330,7 @@ static int checkdest(int iqx, int iqy, int flag, int *ipage) {
 		ishere=0;
 		ientesc=0;
 		future[FSCDBAS]=1e30;
-		for (i = 1; i <= nenhere; i++) 
+		for (i = 1; i <= nenhere; i++)
 			if (quad[kx[i]][ky[i]] == IHS) break;
 		quad[kx[i]][ky[i]] = IHDOT;
 		kx[i] = kx[nenhere];
@@ -353,20 +353,20 @@ static int checkdest(int iqx, int iqy, int flag, int *ipage) {
 			if (REPORTS) {
 				if (*ipage==0) pause(1);
 				*ipage = 1;
-				prout("Lt. Uhura-  \"Captain, Starfleet Intelligence reports");
-				proutn("   a planet in");
+				prout("Лт. Ухура-  \"Капитан, флотская разведка сообщает: ");
+				proutn("   планета в");
 				cramlc(1, d.isx, d.isy);
-				prout(" has been destroyed");
-				prout("   by the Super-commander.\"");
+				prout(" была уничтожена");
+				prout("   Супер-коммандером.\"");
 			}
 			break;
 		}
 	}
 	return 0; /* looks good! */
 }
-			
-		
-	
+
+
+
 
 
 void scom(int *ipage) {
@@ -515,15 +515,15 @@ void scom(int *ipage) {
 			iseenit = 1;
 			if (*ipage == 0)  pause(1);
 			*ipage=1;
-			proutn("Lt. Uhura-  \"Captain, the starbase in");
+			proutn("Лт. Ухура-  \"Капитан, звездная база в ");
 			cramlc(1, d.isx, d.isy);
 			skip(1);
-			prout("   reports that it is under attack from the Klingon Super-commander.");
-			proutn("   It can survive until stardate ");
+			prout("   сообщает, что находится под атакой клингоновского Супер-коммандера.");
+			proutn("   Они смогут продержаться до звездной даты ");
 			cramf(future[FSCDBAS], 0, 1);
 			prout(" .\"");
 			if (resting==0) return;
-			prout("Mr. Spock-  \"Captain, shall we cancel the rest period?\"");
+			prout("Спок-  \"Капитан, не отменить ли нам режим отдыха?\"");
 			if (ja()==0) return;
 			resting = 0;
 			Time = 0.0; /* actually finished */
@@ -541,8 +541,8 @@ void scom(int *ipage) {
 		return;
 	if (*ipage==0) pause(1);
 	*ipage = 1;
-	prout("Lt. Uhura-  \"Captain, Starfleet Intelligence reports");
-	proutn("   the Super-commander is in");
+	prout("Лт. Ухура-  \"Капитан, звездная разведка сообщает: ");
+	proutn("   Супер-коммандер в");
 	cramlc(1, d.isx, d.isy);
 	prout(".\"");
 	return;
