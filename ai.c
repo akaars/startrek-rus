@@ -26,9 +26,9 @@ static int tryexit(int lookx, int looky, int ienm, int loccom, int irun) {
 		condit == IHDOCKED) {
 		proutn("***");
 		cramen(ienm);
-		proutn(" escapes to");
+		proutn(" сбежал в");
 		cramlc(1, iqx, iqy);
-		prout(" (and regains strength).");
+		prout(" (и восстановился).");
 	}
 	/* handle local matters related to escape */
 	kx[loccom] = kx[nenhere];

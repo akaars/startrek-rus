@@ -1264,13 +1264,13 @@ void phasers(void) {
 		skip(1);
 		if (no == 0) {
 			if (Rand() >= 0.99) {
-				prout("Sulu-  \"Sir, the high-speed shield control has malfunctioned . . .");
-				prouts("         CLICK   CLICK   POP  . . .");
-				prout(" No  response, sir!");
+				prout("Сулу-  \"Сэр, контроль высокоскоросного щита поврежден . . .");
+				prouts("         ЩЕЛК   ШЕЛК   ЧПОК  . . .");
+				prout(" Нет ответа, сэр!");
 				shldup = 0;
 			}
 			else
-				prout("Shields raised.");
+				prout("Щиты активны.");
 		}
 		else
 			shldup = 0;
@@ -1297,10 +1297,10 @@ void hittem(double *hits) {
 		jj = ky[kk];
 		if (hit > 0.005) {
 			cramf(hit, 0, 2);
-			proutn(" unit hit on ");
+			proutn(" единиц повреждения ");
 		}
 		else
-			proutn("Very small hit on ");
+			proutn("Небольшие повреждения ");
 		ienm = quad[ii][jj];
 		crmena(0,ienm,2,ii,jj);
 		skip(1);
@@ -1313,10 +1313,10 @@ void hittem(double *hits) {
 		else /* decide whether or not to emasculate klingon */
 			if (kpow > 0 && Rand() >= 0.9 &&
 				kpow <= ((0.4 + 0.4*Rand())*kpini)) {
-				proutn("***Mr. Spock-  \"Captain, the vessel at");
+				proutn("***Спок-  \"Капитан, судно в квадрате");
 				cramlc(2,ii,jj);
 				skip(1);
-				prout("   has just lost its firepower.\"");
+				prout("   потеряло огневую мощь.\"");
 				kpower[kk] = -kpow;
 			}
 	}
@@ -1384,17 +1384,17 @@ void
 	/* Make sure there is room in the brig */
 	if (brigfree == 0)
 	{
-		printf("Security reports the brig is already full.\n");
+		printf("Служба безопасности сообщает, что карцер полон.\n");
 		return;
 	}
 
 	if (!REPORTS) {
-		printf("Uhura- \"We have no subspace radio communication, sir.\"\n");
+		printf("Ухура- \"Мы потеряли подпространственную связь, сэр.\"\n");
 		return;
 	}
 
 	if (damage[DTRANSP] != 0) {
-		printf("Scotty- \"Transporter damaged, sir.\"\n");
+		printf("Скотти- \"Транспортер поврежден, сэр.\"\n");
 		return;
 	}
 
@@ -1403,7 +1403,7 @@ void
 	/* find out if there are any at all */
 	if (klhere < 1)
 	{
-		printf("Uhura- \"Getting no response, sir.\"\n");
+		printf("Ухура- \"Нет ответа, сэр.\"\n");
 		return;
 	}
 
@@ -1427,24 +1427,24 @@ void
 	if (i > 100*Rand())
 	{
 		/* guess what, he surrendered!!! */
-		printf("Klingon captain at %d,%d surrenders\n", kx[k], ky[k]);
+		printf("Клингонский капитан в квадрате %d,%d выживших\n", kx[k], ky[k]);
 		i = 200*Rand();
 		if ( i > 0 )
-			printf("%d Klingons commit suicide rather than be taken captive\n", 200 - i);
+			printf("%d Клингоны совершили самоубийство, предпочтя его плену\n", 200 - i);
 		if (i > brigfree)
 		{
-			printf("%d Klingons die because there is no room for them in the brig.\n", i-brigfree);
+			printf("%d клингонов погибло из-за отсутствия места в карцере.\n", i-brigfree);
 			i = brigfree;
 		}
 		brigfree -= i;
-		printf("%d captives taken\n", i);
+		printf("%d пленных взято\n", i);
 		deadkl(kx[k], ky[k], quad[kx[k]][ky[k]], kx[k], ky[k]);
 		if (d.remkl==0) finish(FWON);
 		return;
 	}
 
 	/* big surprise, he refuses to surrender */
-	printf("Fat chance, captain\n");
+	printf("Жирный шанс, капитан\n");
 	return;
 }
 
