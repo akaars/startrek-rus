@@ -6,36 +6,36 @@ void dstrct() {
 	/* Finish with a BANG! */
 	chew();
 	if (damage[DCOMPTR] != 0.0) {
-		prout("Computer damaged; cannot execute destruct sequence.");
+		prout("Компьютер повреждён; не могу выполнить процедуру самоуничтожения.");
 		return;
 	}
 	skip(1);
-	prouts("---WORKING---"); skip(1);
-	prout("SELF-DESTRUCT-SEQUENCE-ACTIVATED");
+	prouts("---ОБРАБОТКА---"); skip(1);
+	prout("ПРОЦЕДУРА-САМОУНИЧТОЖЕНИЯ-АКТИВИРОВАН");
 	prouts("   10"); skip(1);
 	prouts("       9"); skip(1);
 	prouts("          8"); skip(1);
 	prouts("             7"); skip(1);
 	prouts("                6"); skip(1);
-	prout("ENTER-CORRECT-PASSWORD-TO-CONTINUE-");
-	prout("SELF-DESTRUCT-SEQUENCE-OTHERWISE-");
-	prout("SELF-DESTRUCT-SEQUENCE-WILL-BE-ABORTED");
+	prout("ВВЕДИТЕ-ПАРОЛЬ-ЧТОБЫ-ПРОДОЛЖИТЬ-");
+	prout("ПРОЦЕДУРУ-САМОУНИЧТОЖЕНИЯ-В-ПРОТИВНОМ-СЛУЧАЕ-");
+	prout("ПРОЦЕДУРА-САМОУНИЧТОЖЕНИЯ-БУДЕТ-ОТМЕНЕНА");
 	scan();
 	chew();
 	if (strcmp(passwd, citem) != 0) {
-		prouts("PASSWORD-REJECTED;"); skip(1);
-		prout("CONTINUITY-EFFECTED");
+		prouts("НЕВЕРНЫЙ-ПАРОЛЬ;"); skip(1);
+		prout("ПРОЦЕДУРА-ОТМЕНЕНА");
 		skip(1);
 		return;
 	}
-	prouts("PASSWORD-ACCEPTED"); skip(1);
+	prouts("ПАРОЛЬ-ПРИНЯТ"); skip(1);
 	prouts("                   5"); skip(1);
 	prouts("                      4"); skip(1);
 	prouts("                         3"); skip(1);
 	prouts("                            2"); skip(1);
 	prouts("                              1"); skip(1);
 	if (Rand() < 0.15) {
-		prouts("GOODBYE-CRUEL-WORLD");
+		prouts("ПРОЩАЙ-ЖЕСТОКИЙ-МИР");
 		skip(1);
 	}
 	skip(2);
@@ -45,9 +45,9 @@ void dstrct() {
 void kaboom(void) {
 	stars();
 	if (ship==IHE) prouts("***");
-	prouts("********* Entropy of ");
+	prouts("********* Энтропия ");
 	crmshp();
-	prouts(" maximized *********");
+	prouts(" повышена до максимума *********");
 	skip(1);
 	stars();
 	skip(1);
@@ -55,34 +55,34 @@ void kaboom(void) {
 		double whammo = 25.0 * energy;
 		int l=1;
 		while (l <= nenhere) {
-			if (kpower[l]*kdist[l] <= whammo) 
+			if (kpower[l]*kdist[l] <= whammo)
 				deadkl(kx[l],ky[l], quad[kx[l]][ky[l]], kx[l], ky[l]);
 			l++;
 		}
 	}
 	finish(FDILITHIUM);
 }
-				
+
 
 void finish(FINTYPE ifin) {
 	int igotit = 0;
 	alldone = 1;
 	skip(3);
-	printf("It is stardate %.1f .\n\n", d.date);
+	printf("Текущая звездная дата %.1f .\n\n", d.date);
 	switch (ifin) {
 		case FWON: // Game has been won
 			if (d.nromrem != 0)
-				printf("The remaining %d Romulans surrender to Starfleet Command.\n",
+				printf("Оставшиеся %d ромулан сдаются командованию Звездного флота.\n",
 					   d.nromrem);
 
 
-            prout("You have smashed the Klingon invasion fleet and saved");
-            prout("the Federation.");
+            prout("Вы разнесли клингоновский флот вторжения");
+            prout("и спасли Федерацию.");
 
 #ifdef CAPTURE
             if (alive && brigcapacity-brigfree > 0) { // captured Klingon crew will get transfered to starbase
                 kcaptured += brigcapacity-brigfree;
-                printf("The %d captured Klingons are transferred to Star Fleet Command.\n",
+                printf("%d плененных клингонов переправляются командованию Звездного флота.\n",
                        brigcapacity-brigfree);
             }
 #endif
@@ -100,34 +100,34 @@ void finish(FINTYPE ifin) {
 					(d.killk+d.killc+d.nsckill)/(d.date-indate) >=
 					0.1*skill*(skill+1.0) + 0.1 + 0.008*badpt) {
 					skip(1);
-					prout("In fact, you have done so well that Starfleet Command");
+					prout("Фактически Вы действовали так успешно, что командование Звездного флота");
 					switch (skill) {
 						case SNOVICE:
-							prout("promotes you one step in rank from \"Novice\" to \"Fair\".");
+							prout("повышает Вас в звании на один ранг от Новичка \"Novice\" до Обстрелянного \"Fair\".");
 							break;
 						case SFAIR:
-							prout("promotes you one step in rank from \"Fair\" to \"Good\".");
+							prout("повышает Вас в звании на один ранг от Обстрелянного \"Fair\" до Опытного \"Good\".");
 							break;
 						case SGOOD:
-							prout("promotes you one step in rank from \"Good\" to \"Expert\".");
+							prout("повышает Вас в звании на один ранг от Опытного \"Good\" to Бывалого \"Expert\".");
 							break;
 						case SEXPERT:
-							prout("promotes you to Commodore Emeritus.");
+							prout("повышает Вас до звания Заслуженного Коммодора.");
 							skip(1);
-							prout("Now that you think you're really good, try playing");
-							prout("the \"Emeritus\" game. It will splatter your ego.");
+							prout("Теперь, когда Вы думаете, что круче вас только яйца, сыграйте");
+							prout("за Заслуженного \"Emeritus\". Это приведёт в себя ваше эго.");
 							break;
 						case SEMERITUS:
 							skip(1);
-							prout("Computer-  ERROR-ERROR-ERROR-ERROR");
+							prout("Компьютер-  ОШИБКА-ОШИБКА-ОШИБКА-ОШИБКА");
 							skip(1);
-							prout("  YOUR-SKILL-HAS-EXCEEDED-THE-CAPACITY-OF-THIS-PROGRAM");
-							prout("  THIS-PROGRAM-MUST-SURVIVE");
-							prout("  THIS-PROGRAM-MUST-SURVIVE");
-							prout("  THIS-PROGRAM-MUST-SURVIVE");
-							prout("  THIS-PROGRAM-MUST?- MUST ? - SUR? ? -?  VI");
+							prout("  ВАШ-УРОВЕНЬ-ПРЕВЫСИЛ-ВОЗМОЖНОСТИ-ЭТОЙ-ПРОГРАММЫ");
+							prout("  ЭТА-ПРОГРАММА-ОБЯЗАНА-ВЫЖИТЬ");
+							prout("  ЭТА-ПРОГРАММА-ОБЯЗАНА-ВЫЖИТЬ");
+							prout("  ЭТА-ПРОГРАММА-ОБЯЗАНА-ВЫЖИТЬ");
+							prout("  ЭТА-ПРОГРАММА-ОБЯЗАНА?- ОБЯЗАНА ? - ВЫ? ? -?  ЖИ");
 							skip(1);
-							prout("Now you can retire and write your own Star Trek game!");
+							prout("Теперь Вы можете спокойно выйти в отставку и написать свой Звездный Путь");
 							skip(1);
 							break;
 					}
@@ -137,10 +137,10 @@ void finish(FINTYPE ifin) {
 							&& !idebug
 #endif
 							)
-							prout("You cannot get a citation, so...");
+							prout("Ну, процитировать Вас никак нельзя, так, что ...");
 						else {
-							prout("Do you want your Commodore Emeritus Citation printed?");
-							proutn("(You need a 132 column printer.)");
+							prout("Хотите распечатать эту цитату про Заслуженного Коммодора?");
+							proutn("(Для этого вам нужен будет плоттер.)");
 							chew();
 							if (ja()) {
 								igotit = 1;
@@ -150,84 +150,84 @@ void finish(FINTYPE ifin) {
 				}
 				// Only grant long life if alive (original didn't!)
 				skip(1);
-				prout("LIVE LONG AND PROSPER.");
+				prout("ЖИВИТЕ ДОЛГО И ПРОЦВЕТАЙТЕ.");
 			}
 			score(0);
 			if (igotit != 0) plaque();
 			return;
 		case FDEPLETE: // Federation Resources Depleted
-			prout("Your time has run out and the Federation has been");
-			prout("conquered.  Your starship is now Klingon property,");
-			prout("and you are put on trial as a war criminal.  On the");
-			proutn("basis of your record, you are ");
+			prout("Ваше время вышло и Федерация была захвачена");
+			prout("Ваш космолет теперь собственность клингонов,");
+			prout("А вас судят по обвинению в военных преступлениях");
+			proutn("По результатам суда вы были ");
 			if (d.remkl*3.0 > inkling) {
-				prout("aquitted.");
+				prout("оправданы.");
 				skip(1);
-				prout("LIVE LONG AND PROSPER.");
+				prout("ЖИВИТЕ ДОЛГО И ПРОЦВЕТАЙТЕ.");
 			}
 			else {
-				prout("found guilty and");
-				prout("sentenced to death by slow torture.");
+				prout("признаны виновным и осуждены на");
+				prout("смертную казнь через длительную пытку.");
 				alive = 0;
 			}
 			score(0);
 			return;
-		case FLIFESUP:
-			prout("Your life support reserves have run out, and");
-			prout("you die of thirst, starvation, and asphyxiation.");
-			prout("Your starship is a derelict in space.");
+		case FLIFESUP: //Death and your end
+			prout("Ваши жизненные резервы исчерпались");
+			prout("вы умерли от жажды, голода и отсутствия кислорода.");
+			prout("Ваш космолет превратился в космичекий мусор.");
 			break;
-		case FNRG:
-			prout("Your energy supply is exhausted.");
+		case FNRG: //No energy
+			prout("Источники энергии истощены.");
 			skip(1);
-			prout("Your starship is a derelict in space.");
+			prout("Ваш космолет превратился в космичекий мусор.");
 			break;
 		case FBATTLE:
-			proutn("The ");
+			proutn(" ");
 			crmshp();
-			prout("has been destroyed in battle.");
+			prout("был уничтожен в бою.");
 			skip(1);
 			prout("Dulce et decorum est pro patria mori.");
 			break;
-		case FNEG3:
-			prout("You have made three attempts to cross the negative energy");
-			prout("barrier which surrounds the galaxy.");
+		case FNEG3: //Careful
+			prout("Вы совершили три попытки пересечь барьер негативной энергии");
+			prout("окружающий Галактику.");
 			skip(1);
-			prout("Your navigation is abominable.");
+			prout("Ваши штурманские способности отвратительны.");
 			score(0);
 			return;
-		case FNOVA:
-			prout("Your starship has been destroyed by a nova.");
-			prout("That was a great shot.");
+		case FNOVA://Nova
+			prout("Ваш космолет уничтожен вспышкой новой звезды.");
+			prout("Нормально так постреляли.");
 			skip(1);
 			break;
 		case FSNOVAED:
-			proutn("The ");
+			proutn(" ");
 			crmshp();
-			prout(" has been fried by a supernova.");
-			prout("...Not even cinders remain...");
+			prout(" был поджарен сверхновой.");
+			prout("...даже угольков не осталось...");
 			break;
-		case FABANDN:
-			prout("You have been captured by the Klingons. If you still");
-			prout("had a starbase to be returned to, you would have been");
-			prout("repatriated and given another chance. Since you have");
-			prout("no starbases, you will be mercilessly tortured to death.");
+		case FABANDN://Adandщт and capегкув
+			prout("Вы были пленены клингонами. Если бы у Вас оставались звездные базы");
+			prout("на которые можно было бы вернуться, вы были бы репатриированы");
+			prout("и получили бы ещё один шанс. Но посколько баз не осталось");
+			prout("вас безжалостно запытают до смерти.");
 			break;
-		case FDILITHIUM:
-			prout("Your starship is now an expanding cloud of subatomic particles");
+		case FDILITHIUM://Bigboom
+			prout("Ваш звездолет теперь - расширяющееся облачко субатомных частиц");
 			break;
 		case FMATERIALIZE:
-			prout("Starbase was unable to re-materialize your starship.");
+			prout("Звездная база не смогла материализовать обратно ваш корабль.");
 			prout("Sic transit gloria muntdi");
 			break;
 		case FPHASER:
 			proutn("The ");
 			crmshp();
-			prout(" has been cremated by its own phasers.");
+			prout(" был кремирован собственными фазерами.");
 			break;
 		case FLOST:
-			prout("You and your landing party have been");
-			prout("converted to energy, dissipating through space.");
+			prout("Вы и ваша десантная партия");
+			prout("конвертировались в энергию, растворяясь в космосе.");
 			break;
 		case FMINING:
 			prout("You are left with your landing party on");
@@ -430,7 +430,7 @@ void plaque(void) {
 	char winner[128];
 
 	skip(2);
-	
+
 	while (fp == NULL) {
 		printf("File or device name for your plaque:");
 		fgets(winner, 128, stdin);
