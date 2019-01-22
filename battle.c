@@ -425,7 +425,7 @@ void torpedo(double course, double r, int inx, int iny, double *hit) {
 				skip(1);
 				prouts("ААААСУКАБЛЯЯЯЯЯ!!!");
 				skip(1);
-				prouts("    РУБИ!     ХУЯРЬ!    ПИЗДЯЧЬ!        *ДУШИ!*  ");
+				prouts("    РУБИ!     ХЕРАЧЬ!    ГНОБИ!        *ДУШИ!*  ");
 				skip(1);
 				proutn("Спок-");
 				prouts("  \"Очаровательно!\"");
@@ -1159,7 +1159,7 @@ void phasers(void) {
 				skip(1);
 				prouts("---ОБРАБОТКА---");
 				skip(1);
-				prout("Близкодействующие-сенсоры-повреждены");
+				prout("Сенсоры-ближнего-действия-повреждены");
 				prout("Недостаточно-информации-для-автоматического-огня-фазеров");
 				prout("Необходим-переход-на ручное-управление");
 				skip(1);
@@ -1179,7 +1179,7 @@ void phasers(void) {
 				if (damage[DSRSENS] && !(abs(sectx-ii) < 2 && abs(secty-jj) < 2) &&
 					(ienm == IHC || ienm == IHS)) {
 					cramen(ienm);
-					prout(" не может быть обнаружен без близкодействуюшего сканера.");
+					prout(" не может быть обнаружен без сканера малого радиуса.");
 					chew();
 					key = IHEOL;
 					hits[k] = 0; /* prevent overflow -- thanks to Alexei Voitenko */
