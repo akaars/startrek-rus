@@ -153,22 +153,22 @@ static void helpme(void) {
 	}
 	fp = fopen("sst.doc", "r");
 	if (fp == NULL) {
-		prout("Spock-  \"Captain, that information is missing from the");
-		prout("   computer. You need to find SST.DOC and put it in the");
-		prout("   current directory.\"");
+		prout("Спок-  \"Капитан, эта информация отсутствует на компьютере.");
+		prout("   Вы должны найти файл SST.DOC и скопировать его ");
+		prout("   в текущую папку.\"");
 		return;
 	}
 	i = strlen(cmdbuf);
 	do {
 		if (fgets(linebuf, 132, fp) == NULL) {
-			prout("Spock- \"Captain, there is no information on that command.\"");
+			prout("Спок- \"Капитан, нет информации по этой команде.\"");
 			fclose(fp);
 			return;
 		}
 	} while (strncmp(linebuf, cmdbuf, i) != 0);
 
 	skip(1);
-	prout("Spock- \"Captain, I've found the following information:\"");
+	prout("Спок- \"Капитан, я нашёл следующую информацию:\"");
 	skip(1);
 
 	do {
@@ -192,7 +192,7 @@ static void makemoves(void) {
 		while (TRUE)  { /* get a command */
 			chew();
 			skip(1);
-			proutn("COMMAND> ");
+			proutn("КОМАНДА> ");
 			if (scan() == IHEOL) continue;
 			for (i=0; i < 29; i++) // Abbreviations allowed for the first 29 commands, only.
 				if (isit(commands[i]))
@@ -216,7 +216,7 @@ static void makemoves(void) {
 			   ) break;
 
 			if (skill <= SFAIR)  {
-				prout("UNRECOGNIZED COMMAND. LEGAL COMMANDS ARE:");
+				prout("НЕОПОЗНАННАЯ КОМАНДА. ДОСТУПНЫ СЛЕДУЮЩИЕ КОМАНДЫ:");
 				listCommands(TRUE);
 			}
 			else prout("UNRECOGNIZED COMMAND.");
@@ -233,7 +233,7 @@ static void makemoves(void) {
                 if (ididit) {
 #ifdef CLOAKING
                     if (irhere && d.date >= ALGERON && !isviolreported && iscloaked) {
-                        prout("The Romulan ship discovers you are breaking the Treaty of Algeron!");
+                        prout("Ромуланский корабль обнаружил, что вы нарушаете Алджеронский договор!");
                         ncviol++;
                         isviolreported = TRUE;
                     }
@@ -246,7 +246,7 @@ static void makemoves(void) {
                 if (ididit) {
 #ifdef CLOAKING
                     if (irhere && d.date >= ALGERON && !isviolreported && iscloaked) {
-                        prout("The Romulan ship discovers you are breaking the Treaty of Algeron!");
+                        prout("Ромуланский корабль обнаружил, что вы нарушаете Алджеронский договор!");
                         ncviol++;
                         isviolreported = TRUE;
                     }
@@ -360,7 +360,7 @@ static void makemoves(void) {
 			case 31:			// Save Game
 				freeze(FALSE);
 				if (skill > SGOOD)
-					prout("WARNING--Frozen games produce no plaques!");
+					prout("Предупреждение--Замороженные игры не приносят наград!");
 				break;
 			case 32:			// Try a desparation measure
 				deathray();
@@ -452,17 +452,18 @@ int main(int argc, char **argv) {
 		skip(1);
 
 		if (tourn && alldone) {
-			printf("Do you want your score recorded?");
+			printf("Сохранить ваш счёт?");
 			if (ja()) {
 				chew2();
 				freeze(FALSE);
 			}
 		}
-		printf("Do you want to play again?");
+		printf("Играть заново?");
 		if (!ja()) break;
 	}
 	skip(1);
-	prout("May the Great Bird of the Galaxy roost upon your home planet.");
+	prout("Да совьёт Великая Птица Галактики гнездо под твоей планетой.");
+
 	return 0;
 }
 
@@ -488,8 +489,8 @@ void cramen(int i) {
 }
 
 void cramlc(int key, int x, int y) {
-	if (key == 1) proutn(" Quadrant");
-	else if (key == 2) proutn(" Sector");
+	if (key == 1) proutn(" Квадрант");
+	else if (key == 2) proutn(" Сектор");
 	proutn(" ");
 	crami(x, 1);
 	proutn(" - ");
@@ -609,7 +610,7 @@ int ja(void) {
 		chew();
 		if (*citem == 'y') return TRUE;
 		if (*citem == 'n') return FALSE;
-		proutn("Please answer with \"Y\" or \"N\":");
+		proutn("Пожалуйста ответьте \"Y\" для \"Да\" или \"N\" для \"Нет\":");
 	}
 }
 
@@ -641,16 +642,16 @@ void pause(int i) {
 	putchar('\n');
 	if (i==1) {
 		if (skill > SFAIR)
-			prout("[ANNOUNCEMENT ARRIVING...]");
+			prout("[ПРИНИМАТСЯ ОПОВЕЩЕНИЕ...]");
 		else
-			prout("[IMPORTANT ANNOUNCEMENT ARRIVING -- HIT SPACE BAR TO CONTINUE]");
+			prout("[ПРИНЯТО ВАЖНОЕ ОПОВЕЩЕНИЕ -- НАЖМИТЕ ПРОБЕЛ ЧТОБЫ ПРОДОЛЖИТЬ]");
 		getch();
 	}
 	else {
 		if (skill > SFAIR)
-			proutn("[CONTINUE?]");
+			proutn("[ПРОДОЛЖИТЬ?]");
 		else
-			proutn("[HIT SPACE BAR TO CONTINUE]");
+			proutn("[НАЖМИТЕ ПРОБЕЛ ЧТОБЫ ПРОДОЛЖИТЬ]");
 		getch();
 		proutn("\r                           \r");
 	}
@@ -695,7 +696,7 @@ void prouts(char *s) {
 void huh(void) {
 	chew();
 	skip(1);
-	prout("Beg your pardon, Captain?");
+	prout("Простите, Капитан?");
 }
 
 int isit(char *s) {
