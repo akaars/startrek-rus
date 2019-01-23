@@ -230,69 +230,69 @@ void finish(FINTYPE ifin) {
 			prout("конвертировались в энергию, растворяясь в космосе.");
 			break;
 		case FMINING:
-			prout("You are left with your landing party on");
-			prout("a wild jungle planet inhabited by primitive cannibals.");
+			prout("Вы и Ваша десантная партия - на дикой, покрытой джунглями планете");
+			prout("населенной примитивными каннибалами.");
 			skip(1);
-			prout("They are very fond of \"Captain Kirk\" soup.");
+			prout("Каннибалам очень нравится суп \"Капитан Кирк\".");
 			skip(1);
-			proutn("Without your leadership, the ");
+			proutn("Оставшийся без Вашего руководства ");
 			crmshp();
-			prout(" is destroyed.");
+			prout(" уничтожен.");
 			break;
 		case FDPLANET:
-			prout("You and your mining party perish.");
+			prout("Вы и Ваша шахтёрская партия погибли.");
 			skip(1);
-			prout("That was a great shot.");
+			prout("Нормально так стрельнули.");
 			skip(1);
 			break;
 		case FSSC:
-			prout("The Galileo is instantly annihilated by the supernova.");
+			prout("Галилео мгновенно аннигилировал во взрыве сверхновой.");
 			// no break;
 		case FPNOVA:
-			prout("You and your mining party are atomized.");
+			prout("Вы и Ваша шахтёрская партия распылены на атомы.");
 			skip(1);
-			proutn("Mr. Spock takes command of the ");
+			proutn("Спок принимает команду над ");
 			crmshp();
-			prout(" and");
-			prout("joins the Romulans, reigning terror on the Federation.");
+			prout(" и");
+			prout("присоединяется к ромуланам, сея ужас в Федерации.");
 			break;
 		case FSTRACTOR:
-			prout("The shuttle craft Galileo is also caught,");
-			prout("and breaks up under the strain.");
+			prout("Посадочный челнок Галилей так же захвачен,");
+			prout("и разрушается от нагрузок.");
 			skip(1);
-			prout("Your debris is scattered for millions of miles.");
-			proutn("Without your leadership, the ");
+			prout("Ваш мусор рассеян на миллионы километров.");
+			proutn("Оставшийся без Вашего руководства ");
 			crmshp();
-			prout(" is destroyed.");
+			prout(" уничтожен.");
 			break;
 		case FDRAY:
-			prout("The mutants attack and kill Spock.");
-			prout("Your ship is captured by Klingons, and");
-			prout("your crew is put on display in a Klingon zoo.");
+			prout("Мутанты атакуют и убивают Спока.");
+			prout("Ваш корабль захвачен клингонами и");
+			prout("его экипаж демонстрируется в клингоновском зоопарке.");
 			break;
 		case FTRIBBLE:
-			prout("Tribbles consume all remaining water,");
-			prout("food, and oxygen on your ship.");
+			prout("Триблы выпили всю оставшуюся воду,");
+			prout("сожрали еду и выдышали весь оставшийся кислород на корабле.");
 			skip(1);
-			prout("You die of thirst, starvation, and asphyxiation.");
-			prout("Your starship is a derelict in space.");
+			prout("Вы погибаете от жажды, голода и удушья.");
+			prout("Ваш звездолет покинут в космосе.");
 			break;
 		case FHOLE:
-			prout("Your ship is drawn to the center of the black hole.");
-			prout("You are crushed into extremely dense matter.");
+			prout("Ваш корабль затянут в центр черной дыры.");
+			prout("Вы разбиваетесь о сверхплотную материю.");
 			break;
 #ifdef CLOAKING
 		case FCLOAK:
 			ncviol++;
-			prout("You have violated the Treaty of Algeron.");
-			prout("The Romulan Empire can never trust you again.");
+			prout("Вы нарушили Алджеронский договор.");
+			prout("Ромуланская Империя никогда больше не сможет вам доверять.");
 			break;
 #endif
 	}
 #ifdef CLOAKING
 	if (ifin!=FWON && ifin!=FCLOAK && iscloaked!=0) {
-		prout("Your ship was cloaked so your subspace radio did not receive anything.");
-		prout("You may have missed some warning messages.");
+		prout("Ваш корабль был замаскирован, из-за чего подпространственное радио не работало.");
+		prout("Возможно вы пропустили предупреждения.");
 		skip(1);
 	}
 #endif
@@ -304,24 +304,24 @@ void finish(FINTYPE ifin) {
 		double goodies = d.remres/inresor;
 		double baddies = (d.remkl + 2.0*d.remcom)/(inkling+2.0*incom);
 		if (goodies/baddies >= 1.0+0.5*Rand()) {
-			prout("As a result of your actions, a treaty with the Klingon");
-			prout("Empire has been signed. The terms of the treaty are");
+			prout("В результате ваших действий был подписан мирный договор");
+			prout("с Империей клингонов. Условия договора");
 			if (goodies/baddies >= 3.0+Rand()) {
-				prout("favorable to the Federation.");
+				prout("выгодня для Федерации.");
 				skip(1);
-				prout("Congratulations!");
+				prout("Поздравляем!");
 			}
 			else
-				prout("highly unfavorable to the Federation.");
+				prout("очень невыгодны для Федерации.");
 		}
 		else
-			prout("The Federation will be destroyed.");
+			prout("Федерация будет уничтожена.");
 	}
 	else {
-		prout("Since you took the last Klingon with you, you are a");
-		prout("martyr and a hero. Someday maybe they'll erect a");
-		prout("statue in your memory. Rest in peace, and try not");
-		prout("to think about pigeons.");
+		prout("Поскольку Вы забрали последнего клингона с собой, вы ");
+		prout("и мученик, и герой. Возможно, когда-нибудь");
+		prout("в Вашу честь воздвигнут статую. Покойтесь с миром и старайтесь");
+		prout("не думать о голубях.");
 		gamewon = 1;
 	}
 	score(0);
@@ -355,71 +355,71 @@ void score(int inGame) {
 #endif
 	if (alive == 0) iscore -= 200;
 	skip(2);
-    if (inGame) prout("Your score so far --");
-    else prout("Your score --");
+    if (inGame) prout("Ваш текущий счет --");
+    else prout("Ваш счет --");
 	if (d.nromkl)
-		printf(d.nromkl> 1 ? "%6d Romulan ships destroyed            %5d\n" : "%6d Romulan ship destroyed             %5d\n",
+		printf(d.nromkl> 1 ? "%6d кораблей ромулан уничтожено            %5d\n" : "%6d корабль ромулан уничтожен             %5d\n",
 			   d.nromkl, 20*d.nromkl);
 	if (dnromrem)
-		printf(dnromrem > 1 ? "%6d Romulan ships captured             %5d\n" : "%6d Romulan ship captured              %5d\n",
+		printf(dnromrem > 1 ? "%6d кораблей ромулан захвачено             %5d\n" : "%6d корабль ромулан захвачен              %5d\n",
 			   dnromrem, dnromrem);
 	if (d.killk)
-		printf(d.killk > 1 ? "%6d ordinary Klingon ships destroyed   %5d\n" : "%6d ordinary Klingon ship destroyed    %5d\n",
+		printf(d.killk > 1 ? "%6d кораблей клингонов уничтожено   %5d\n" : "%6d корабль клингонов уничтожен    %5d\n",
 			   d.killk,  10*d.killk);
 	if (d.killc)
-		printf(d.killc > 1 ? "%6d Klingon Commander ships destroyed  %5d\n" : "%6d Klingon Commander ship destroyed   %5d\n",
+		printf(d.killc > 1 ? "%6d Коммандеров клингонов уничтожено  %5d\n" : "%6d Коммандер клингонов уничтожен   %5d\n",
 			   d.killc, 50*d.killc);
 	if (d.nsckill)
-		printf("%6d Super-Commander ship destroyed     %5d\n",
+		printf("%6d Супер-коммандер уничтожен     %5d\n",
 			   d.nsckill, 200*d.nsckill);
 	if (ithperd)
-		printf("%6.2f Klingons per stardate              %5d\n",
+		printf("%6.2f Клингонов в сутки              %5d\n",
 			   perdate, ithperd);
 #ifdef CAPTURE
 	if (kcaptured)
-		printf(kcaptured > 1 ? "%6d Klingons captured                  %5d\n" : "%6d Klingon captured                   %5d\n",
+		printf(kcaptured > 1 ? "%6d клингонов пленено                  %5d\n" : "%6d клингоно пленен                   %5d\n",
 		        kcaptured, 3*kcaptured);
 #endif
 	if (d.starkl)
-		printf(d.starkl > 1 ? "%6d stars destroyed by your action     %5d\n" : "%6d star destroyed by your action      %5d\n",
+		printf(d.starkl > 1 ? "%6d звезд уничтожено вашими действиями     %5d\n" : "%6d звезда уничтожена вашими действиями      %5d\n",
 			   d.starkl, -5*d.starkl);
 	if (d.nplankl)
-		printf(d.nplankl > 1 ? "%6d planets destroyed by your action   %5d\n" : "%6d planet destroyed by your action    %5d\n",
+		printf(d.nplankl > 1 ? "%6d планет уничтожено вашими действиями   %5d\n" : "%6d планета уничтожена вашими действиями    %5d\n",
 			   d.nplankl, -10*d.nplankl);
 	if (d.basekl)
-		printf(d.basekl > 1 ? "%6d bases destroyed by your action     %5d\n" : "%6d base destroyed by your action      %5d\n",
+		printf(d.basekl > 1 ? "%6d баз уничтожено вашими действиями     %5d\n" : "%6d база уничтожена вашими действиями      %5d\n",
 			   d.basekl, -100*d.basekl);
 	if (nhelp)
-		printf(nhelp > 1 ? "%6d calls for help from starbase       %5d\n" : "%6d call for help from starbase        %5d\n",
+		printf(nhelp > 1 ? "%6d запросов помощи у звездной базы       %5d\n" : "%6d запрос помощи у звездной базы        %5d\n",
 			   nhelp, -45*nhelp);
 	if (casual)
-		printf(casual > 1 ? "%6d casualties incurred                %5d\n" : "%6d casualty incurred                  %5d\n",
+		printf(casual > 1 ? "%6d погибших                 %5d\n" : "%6d погибший                  %5d\n",
 			   casual, -casual);
 	if (klship)
-		printf(klship > 1 ? "%6d ships lost or destroyed            %5d\n" : "%6d ship lost or destroyed             %5d\n",
+		printf(klship > 1 ? "%6d кораблей потеряно, или уничтожено            %5d\n" : "%6d  корабль потерян, или уничтожен             %5d\n",
 			   klship, -100*klship);
 #ifdef CLOAKING
 	if (ncviol>0)
-		printf(ncviol > 1 ? "%6d Treaty of Algeron violations       %5d\n" : "%6d Treaty of Algeron violation        %5d\n",
+		printf(ncviol > 1 ? "%6d нарушений Алджеронского договора       %5d\n" : "%6d нарушение Алджеронского договора        %5d\n",
 		       ncviol, -100*ncviol);
 #endif
 	if (alive==0)
-		prout("Penalty for getting yourself killed        -200");
+		prout("Штрафные очки за то, что позволили себя убить        -200");
 	if (gamewon) {
 		skip(1);
-		proutn("Bonus for winning ");
+		proutn("Бонус за победу ");
 		switch (skill) {
-			case SNOVICE: proutn("Novice game  "); break;
-			case SFAIR: proutn("Fair game    "); break;
-			case SGOOD: proutn("Good game    "); break;
-			case SEXPERT: proutn("Expert game  "); break;
-			case SEMERITUS: proutn("Emeritus game"); break;
+			case SNOVICE: proutn("Игра за новичка  "); break;
+			case SFAIR: proutn("Игра за обстрелянного    "); break;
+			case SGOOD: proutn("Игра за опытного    "); break;
+			case SEXPERT: proutn("Игра за бывалого  "); break;
+			case SEMERITUS: proutn("Игра за Заслуженного"); break;
 		}
 		printf("           %5d\n", iwon);
 	}
 	skip(2);
-    printf("TOTAL SCORE                               %5d\n", iscore);
-    if (inGame && skill < SGOOD) printf("REMEMBER--The score doesn't really matter until the mission is accomplished!\n");
+    printf("ОБЩИЙ СЧЕТ                               %5d\n", iscore);
+    if (inGame && skill < SGOOD) printf("ПОМНИТЕ--счет не имеет смысла, пока миссия не завершена!\n");
 }
 
 void plaque(void) {
@@ -432,16 +432,16 @@ void plaque(void) {
 	skip(2);
 
 	while (fp == NULL) {
-		printf("File or device name for your plaque:");
+		printf("Имя файла или устройства для сохранения награды:");
 		fgets(winner, 128, stdin);
 		winner[strlen(winner)-1] = '\0';
 		fp = fopen(winner, "w");
 		if (fp==NULL) {
-			printf("Invalid name.\n");
+			printf("Неверно указанное имя.\n");
 		}
 	}
 
-	printf("Enter name to go on plaque (up to 30 characters):");
+	printf("Введите имя для указания на награде (до 30 знаков):");
 	fgets(winner, 128, stdin);
 	winner[strlen(winner)-1] = '\0';
 	winner[30] = '\0';

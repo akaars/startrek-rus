@@ -9,7 +9,7 @@ void lmove(void) {
 	int trbeam = 0, n, l, ix, iy, kink, kinks, iquad;
 
 	if (inorbit) {
-		prout("SULU- \"Leaving standard orbit.\"");
+		prout("Сулу- \"покидаем стандартную орбиту.\"");
 		inorbit = 0;
 	}
 
@@ -101,9 +101,9 @@ void lmove(void) {
 						finish(FNEG3);
 						return;
 					}
-					prout("\nYOU HAVE ATTEMPTED TO CROSS THE NEGATIVE ENERGY BARRIER\n"
-						 "AT THE EDGE OF THE GALAXY.  THE THIRD TIME YOU TRY THIS,\n"
-                          "YOU WILL BE DESTROYED.\n");
+					prout("\nВЫ ПЫТАЕТЕСЬ ПЕРЕСЕЧЬ БАРЬЕР ОТРИЦАТЕЛЬНОЙ ЭНЕРГИИ\n"
+						 "НА ГРАНИЦЕ ГАЛАКТИКИ.  ПОСЛЕ ТРЕТЬЕЙ ПОПЫТКИ,\n"
+                          "ВЫ БУДЕТЕ УНИЧТОЖЕНЫ!.\n");
                 }
 				/* Compute final position in new quadrant */
                 if (trbeam) return; /* Don't bother if we are to be beamed */
